@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace BTree
 {
@@ -21,7 +22,7 @@ namespace BTree
         public List<Node> Children { get => _children; }
         public bool HasChildren { get => _children.Count > 0; }
         public virtual NodeState Evaluate() => NodeState.FAILURE;
-        
+
         public Node(List<Node> children) : this()
         {
             SetChildren(children);
@@ -80,6 +81,13 @@ namespace BTree
         {
             _dataContext[key] = value;
         }
-    } 
+    }
+
+    public struct EditorNode
+    {
+        public float width;
+        public float height;
+        public Vector2 position;
+    }
 }
 
