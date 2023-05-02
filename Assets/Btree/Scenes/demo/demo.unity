@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOV: 8
-  AttackRadius: 1.5
+  AttackRadius: 2
   AttackRate: 1
   AttackDamage: 20
 --- !u!114 &428589093

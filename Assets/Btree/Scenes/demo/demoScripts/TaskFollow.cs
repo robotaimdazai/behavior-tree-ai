@@ -16,24 +16,23 @@ public class TaskFollow : Node
 
     public override NodeState Evaluate()
     {
-        var currentTarget = (Transform)GetData(PlayerBTree.CurrentTarget);
+        var currentTarget = GetData(PlayerBTree.CurrentTarget);
         if (currentTarget == null)
         {
             _state = NodeState.FAILURE;
             return _state;
         }
-
-        var newPos = GetNearestPointToTarget(currentTarget.position);
-        if (newPos!=_lastPos)
+        Vector3 targetPosition = GetNearestPointToTarget((Transform)currentTarget);
+        if (targetPosition!=_lastPos)
         {
-            _player.MoveTo(newPos);
-            _lastPos = newPos;
+            if(targetPosition!=Vector3.zero)
+                _player.MoveTo(targetPosition);
+            _lastPos = targetPosition;
         }
         
-        float remainingDistance = Vector3.Distance(_player.transform.position, newPos);
+        float remainingDistance = Vector3.Distance(_player.transform.position, _player.NavMeshAgent.destination);
         if (remainingDistance<=_player.NavMeshAgent.stoppingDistance)
         {
-            ClearData(PlayerBTree.CurrentTarget);
             _state = NodeState.SUCCESS;
             return _state;
         }
@@ -42,11 +41,12 @@ public class TaskFollow : Node
         return _state;
     }
 
-    private Vector3 GetNearestPointToTarget(Vector3 targetPos)
+    private Vector3 GetNearestPointToTarget(Transform target)
     {
+        if(target==null) return Vector3.zero;
         var playerPos = _player.transform.position;
-        var direction= targetPos - playerPos;
-        float stoppingRadius = _player.AttackRadius/ direction.magnitude;
+        var direction= target.position- playerPos;
+        float stoppingRadius =_player.AttackRadius/ direction.magnitude;
         return playerPos + direction * (1 - stoppingRadius);
     }
     

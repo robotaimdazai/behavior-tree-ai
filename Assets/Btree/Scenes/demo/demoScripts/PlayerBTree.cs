@@ -36,8 +36,9 @@ public class PlayerBTree : Tree
                    new Sequence(new List<Node>()
                    {
                        new CheckHasTarget(_player),
-                       new Selector( new List<Node>()
+                       new Parallel( new List<Node>()
                        {
+                           new TaskFollow(_player),
                            new Sequence(new List<Node>()
                            {
                                new CheckEnemyInAttackRange(_player),
@@ -46,7 +47,7 @@ public class PlayerBTree : Tree
                                     new TaskAttack(_player)
                                })
                            }),
-                           new TaskFollow(_player)
+                           
                        })
                    })
                })

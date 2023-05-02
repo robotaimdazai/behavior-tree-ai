@@ -4,16 +4,32 @@ using System.Collections.Generic;
 using BTree;
 using UnityEditor;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
+
 
 public class EditorTreeDrawer
 {
-    public static void DrawNode(Node node, Vector2 position, Vector2 nodeSize)
+    public static void DrawNode(Node node, Vector2 position, float nodeSize)
     {
         // Draw the node's label
         var subTreeHeight = 100f;
-        float childDistance = 300f;
-        GUI.Label(new Rect(position.x - nodeSize.x / 2, position.y - nodeSize .y/ 2, nodeSize.x, nodeSize.y), node.GetType().Name);
+        float childDistance = 200f;
+        float nodeHeight = nodeSize/4;
+        float nodeHeightOffset = 40;
+        var guiStyle = new GUIStyle()
+        {
+            alignment = TextAnchor.MiddleCenter,
+            stretchWidth = true,
+            normal = new GUIStyleState(){textColor = Color.white}
+        };
+
+        GUI.Label(new Rect(position.x - nodeSize / 2, position.y-nodeHeightOffset , nodeSize, nodeHeight), node.GetType().Name,guiStyle);
+        if (node.State == NodeState.RUNNING || node.State == NodeState.SUCCESS)
+        {
+            guiStyle.normal.textColor = Color.red;
+            GUI.Label(new Rect(position.x - nodeSize / 2, position.y-nodeHeightOffset , nodeSize, nodeHeight), node.GetType().Name,guiStyle);
+        }
+       
         // Calculate the positions of the child nodes
         float childCount = node.Children.Count;
         float startChildPosition = position.x - ((childCount - 1) * childDistance / 2f);
@@ -32,6 +48,12 @@ public class EditorTreeDrawer
         // Draw a line between two points
         Handles.color = Color.white;
         Handles.DrawLine(start, end);
+        if (node.State == NodeState.RUNNING || node.State == NodeState.SUCCESS)
+        {
+            Handles.color = Color.red;
+            Handles.DrawLine(start, end);
+        }
+        
     }
 }
 

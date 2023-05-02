@@ -14,6 +14,7 @@ public class ZoomableEditorWindow : EditorWindow
     private float _min = 1f;
     private float _max = 3f;
     private float _zoomSpeed = 0.1f;
+    private Rect _draggableRect;
 
     private void OnEnable()
     {
@@ -63,8 +64,9 @@ public class ZoomableEditorWindow : EditorWindow
 
             if (tree != null)
             {
-                var nodeSize = new Vector2(200, 100);
-                EditorTreeDrawer.DrawNode(tree.Root, new Vector2(Screen.width/2,50), nodeSize);
+                var nodeSize = 200f;
+                var treePos = new Vector2(Screen.width / 2, 100);
+                EditorTreeDrawer.DrawNode(tree.Root, treePos, nodeSize);
             }
             
         }
@@ -75,8 +77,8 @@ public class ZoomableEditorWindow : EditorWindow
         {
             zoomLevel -= Event.current.delta.y * _zoomSpeed;
             zoomLevel = Mathf.Clamp(zoomLevel, _min, _max);
-            Repaint();
         }
+        Repaint();
     }
 }
 

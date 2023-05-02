@@ -17,12 +17,17 @@ namespace BTree
         protected NodeState _state;
         protected List<Node> _children = new List<Node>();
         public NodeState State { get => _state; }
-        public Node() { _parent = null; }
+        
         public Node Parent { get => _parent; }
         public List<Node> Children { get => _children; }
         public bool HasChildren { get => _children.Count > 0; }
         public virtual NodeState Evaluate() => NodeState.FAILURE;
 
+        public Node()
+        {
+            _parent = null;
+            _state = NodeState.FAILURE;
+        }
         public Node(List<Node> children) : this()
         {
             SetChildren(children);
@@ -81,13 +86,6 @@ namespace BTree
         {
             _dataContext[key] = value;
         }
-    }
-
-    public struct EditorNode
-    {
-        public float width;
-        public float height;
-        public Vector2 position;
     }
 }
 

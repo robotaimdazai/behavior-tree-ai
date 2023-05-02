@@ -23,15 +23,20 @@ public class TaskTrySetDestinationOrTarget : Node
                 var damageable = hit.collider.GetComponent<IDamagable>();
                 if (damageable==null)
                 {
+                    Parent.Parent.ClearData(PlayerBTree.CurrentTarget);
                     Parent.Parent.SetData(PlayerBTree.CurrentDestination,hit.point);
                     _state = NodeState.SUCCESS;
                     Debug.Log("Dest");
                     return _state;
                 }
-                Parent.Parent.SetData(PlayerBTree.CurrentTarget,hit.transform);
-                _state = NodeState.SUCCESS;
-                Debug.Log("Target");
-                return _state;
+                else
+                {
+                    Parent.Parent.ClearData(PlayerBTree.CurrentDestination);
+                    Parent.Parent.SetData(PlayerBTree.CurrentTarget,hit.transform);
+                    _state = NodeState.SUCCESS;
+                    Debug.Log("Target");
+                    return _state;
+                }
             }
         }
         _state = NodeState.FAILURE;

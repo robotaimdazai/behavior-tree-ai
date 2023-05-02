@@ -32,7 +32,7 @@ public class CheckEnemyInAttackRange : Node
         }
         
         float d = Vector3.Distance(_player.transform.position, target.position);
-        bool isInRange = d  <= _player.AttackRadius;
+        bool isInRange = (d -1) <= _player.AttackRadius;
         _state = isInRange ? NodeState.SUCCESS : NodeState.FAILURE;
         return _state;
     }
