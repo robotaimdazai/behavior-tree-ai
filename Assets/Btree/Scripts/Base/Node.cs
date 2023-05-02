@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,19 +10,21 @@ namespace BTree
         SUCCESS,
         FAILURE
     }
-
-    public class Node
+    
+    [System.Serializable]
+    public class Node : ScriptableObject
     {
         private Node _parent;
-        private Dictionary<string, object> _dataContext = new();
+        private Dictionary<string, object> _data = new();
         protected NodeState _state;
+        [SerializeField]
         protected List<Node> _children = new List<Node>();
         public NodeState State { get => _state; }
         
         public Node Parent { get => _parent; }
         public List<Node> Children { get => _children; }
         public bool HasChildren { get => _children.Count > 0; }
-        public virtual NodeState Evaluate() => NodeState.FAILURE;
+        public virtual NodeState Tick() => NodeState.FAILURE;
 
         public Node()
         {
@@ -50,7 +53,7 @@ namespace BTree
         public object GetData(string key)
         {
             object value = null;
-            if (_dataContext.TryGetValue(key, out value))
+            if (_data.TryGetValue(key, out value))
                 return value;
 
             Node node = _parent;
@@ -66,9 +69,9 @@ namespace BTree
         }
         public bool ClearData(string key)
         {
-            if (_dataContext.ContainsKey(key))
+            if (_data.ContainsKey(key))
             {
-                _dataContext.Remove(key);
+                _data.Remove(key);
                 return true;
             }
 
@@ -84,10 +87,10 @@ namespace BTree
         }
         public void SetData(string key, object value)
         {
-            _dataContext[key] = value;
+            _data[key] = value;
         }
 
-        public void SetDefaultState()
+        private void SetDefaultState()
         {
             _state = NodeState.FAILURE;
         }
@@ -101,5 +104,6 @@ namespace BTree
             }
         }
     }
+    
 }
 

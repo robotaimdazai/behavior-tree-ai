@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TaskMove",menuName = "BehaviorTree/TaskMove")]
 public class TaskMove : Node
 {
     private Player _player;
@@ -11,7 +12,7 @@ public class TaskMove : Node
         _player = player;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         var currentDest = (Vector3)GetData(PlayerBTree.CurrentDestination);
         //if agent has not reached yet then keep proceeding

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace BTree
 {
+    [CreateAssetMenu(fileName = "Sequence",menuName = "BehaviorTree/Sequence")]
     public class Sequence : Node
     {
         private bool _isRandom;
-        
         public Sequence() : base() { _isRandom = false; }
         public Sequence(bool isRandom) : base() { _isRandom = isRandom; }
         public Sequence(List<Node> children, bool isRandom = false) : base(children)
@@ -20,7 +21,7 @@ namespace BTree
             return list.OrderBy(x => r.Next()).ToList();
         }
         
-        public override NodeState Evaluate()
+        public override NodeState Tick()
         {
             bool anyChildIsRunning = false;
             if (_isRandom)
@@ -28,7 +29,7 @@ namespace BTree
 
             foreach (Node node in _children)
             {
-                switch (node.Evaluate())
+                switch (node.Tick())
                 {
                     case NodeState.FAILURE:
                         _state = NodeState.FAILURE;

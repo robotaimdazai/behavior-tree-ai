@@ -6,6 +6,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Node = BTree.Node;
 
+[CreateAssetMenu(fileName = "CheckEnemyInFOV",menuName = "BehaviorTree/CheckEnemyInFOV")]
 public class CheckEnemyInFOV : Node
 {
     private Player _player;
@@ -17,7 +18,7 @@ public class CheckEnemyInFOV : Node
         _fovRadius = player.FOV;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         //All colliders in fov
         //filters those having damageable

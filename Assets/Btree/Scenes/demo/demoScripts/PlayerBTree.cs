@@ -18,15 +18,15 @@ public class PlayerBTree : Tree
         _player = GetComponent<Player>();
     }
     
-    protected override Node SetupTree()
+    protected override Node Setup()
     {
-        Node root = new Selector(new List<Node>()
+        Node root = new Fallback(new List<Node>()
         {
             new Parallel(new List<Node>()
             {
                new TaskTrySetDestinationOrTarget(_player),
                
-               new Selector(new List<Node>()
+               new Fallback(new List<Node>()
                {
                    new Sequence(new List<Node>()
                    {
@@ -36,13 +36,13 @@ public class PlayerBTree : Tree
                    new Sequence(new List<Node>()
                    {
                        new CheckHasTarget(_player),
-                       new Parallel( new List<Node>()
+                       new Inverter( new List<Node>()
                        {
                            new TaskFollow(_player),
                            new Sequence(new List<Node>()
                            {
                                new CheckEnemyInAttackRange(_player),
-                               new Timer(_player.AttackRate,new List<Node>()
+                               new Wait(_player.AttackRate,new List<Node>()
                                {
                                     new TaskAttack(_player)
                                })

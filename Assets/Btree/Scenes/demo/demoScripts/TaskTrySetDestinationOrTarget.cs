@@ -4,15 +4,15 @@ using BTree;
 using UnityEngine;
 using UnityEngine.AI;
 
+[CreateAssetMenu(fileName = "TaskTrySetDestinationOrTarget",menuName = "BehaviorTree/TaskTrySetDestinationOrTarget")]
 public class TaskTrySetDestinationOrTarget : Node
 {
     private Player _player;
-    
     public TaskTrySetDestinationOrTarget(Player player) : base()
     {
         _player = player;
     }
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         if (Input.GetMouseButtonDown(0))
         {

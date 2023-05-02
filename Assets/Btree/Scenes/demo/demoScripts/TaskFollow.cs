@@ -4,6 +4,7 @@ using BTree;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TaskFollow",menuName = "BehaviorTree/TaskFollow")]
 public class TaskFollow : Node
 {
     private Player _player;
@@ -14,7 +15,7 @@ public class TaskFollow : Node
         _lastPos = Vector3.zero;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         var currentTarget = GetData(PlayerBTree.CurrentTarget);
         if (currentTarget == null)

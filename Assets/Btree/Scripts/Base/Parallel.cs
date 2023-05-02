@@ -1,19 +1,22 @@
 
 using System.Collections.Generic;
+using UnityEngine;
+
 namespace BTree
 {
+    [CreateAssetMenu(fileName = "Parallel",menuName = "BehaviorTree/Parallel")]
     public class Parallel : Node
     {
         public Parallel() : base() { }
         public Parallel(List<Node> children) : base(children) { }
 
-        public override NodeState Evaluate()
+        public override NodeState Tick()
         {
             bool anyChildIsRunning = false;
             int nFailedChildren = 0;
             foreach (Node node in _children)
             {
-                switch (node.Evaluate())
+                switch (node.Tick())
                 {
                     case NodeState.FAILURE:
                         nFailedChildren++;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TaskAttack",menuName = "BehaviorTree/TaskAttack")]
 public class TaskAttack : Node
 {
     Player _player;
@@ -10,7 +11,7 @@ public class TaskAttack : Node
     {
         _player = player;
     }
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         var currentTarget =(Transform) GetData(PlayerBTree.CurrentTarget);
         var damagable = currentTarget.GetComponent<IDamagable>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "CheckHasDestination",menuName = "BehaviorTree/CheckHasDestination")]
 public class CheckHasDestination : Node
 {
     private Player _player;
@@ -11,7 +12,7 @@ public class CheckHasDestination : Node
         _player = player;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         var currentDest = Parent.GetData(PlayerBTree.CurrentDestination);
         if (currentDest == null)

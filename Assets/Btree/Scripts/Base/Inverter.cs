@@ -8,10 +8,10 @@ namespace BTree
         public Inverter() : base() { }
         public Inverter(List<Node> children) : base(children) { }
         
-        public override NodeState Evaluate()
+        public override NodeState Tick()
         {
             if (!HasChildren) return NodeState.FAILURE;
-            switch (_children[0].Evaluate())
+            switch (_children[0].Tick())
             {
                 case NodeState.FAILURE:
                     _state = NodeState.SUCCESS;

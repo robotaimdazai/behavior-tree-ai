@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Node = BTree.Node;
 
+[CreateAssetMenu(fileName = "CheckHasTarget",menuName = "BehaviorTree/CheckHasTarget")]
 public class CheckHasTarget : Node
 {
     private Player _player;
@@ -12,7 +13,7 @@ public class CheckHasTarget : Node
     {
         _player = player;
     }
-    public override NodeState Evaluate()
+    public override NodeState Tick()
     {
         var currentTarget = Parent.GetData(PlayerBTree.CurrentTarget);
         if (currentTarget == null)
