@@ -32,6 +32,8 @@ namespace BTree
                 {
                     case NodeState.FAILURE:
                         _state = NodeState.FAILURE;
+                        // you can comment this function if you want, this was mainly written for visualization
+                        ResetChildStatesOnFailure(this);
                         return _state;
                     case NodeState.SUCCESS:
                         continue;
@@ -46,6 +48,7 @@ namespace BTree
             _state = anyChildIsRunning ? NodeState.RUNNING : NodeState.SUCCESS;
             return _state;
         }
+        
     }
 
 }

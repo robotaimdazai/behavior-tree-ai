@@ -86,6 +86,20 @@ namespace BTree
         {
             _dataContext[key] = value;
         }
+
+        public void SetDefaultState()
+        {
+            _state = NodeState.FAILURE;
+        }
+        
+        protected void ResetChildStatesOnFailure(Node node)
+        {
+            node.SetDefaultState();
+            foreach (var child in node._children)
+            {
+                ResetChildStatesOnFailure(child);
+            }
+        }
     }
 }
 
