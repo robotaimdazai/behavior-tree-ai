@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace BTree
 {
-    [CreateAssetMenu(fileName = "Sequence",menuName = "BehaviorTree/Sequence")]
     public class Sequence : Node
     {
         private bool _isRandom;

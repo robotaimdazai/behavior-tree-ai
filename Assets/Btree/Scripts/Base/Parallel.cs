@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace BTree
 {
-    [CreateAssetMenu(fileName = "Parallel",menuName = "BehaviorTree/Parallel")]
     public class Parallel : Node
     {
         public Parallel() : base() { }

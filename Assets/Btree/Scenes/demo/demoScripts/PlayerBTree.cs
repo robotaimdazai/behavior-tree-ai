@@ -36,7 +36,7 @@ public class PlayerBTree : Tree
                    new Sequence(new List<Node>()
                    {
                        new CheckHasTarget(_player),
-                       new Inverter( new List<Node>()
+                       new Parallel( new List<Node>()
                        {
                            new TaskFollow(_player),
                            new Sequence(new List<Node>()

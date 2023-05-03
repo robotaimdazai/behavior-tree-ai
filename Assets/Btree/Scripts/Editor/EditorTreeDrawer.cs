@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BTree;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Tree = BTree.Tree;
 
 
 public class EditorTreeDrawer
@@ -54,6 +56,39 @@ public class EditorTreeDrawer
             Handles.DrawLine(start, end);
         }
         
+    }
+
+    public static void DrawTree()
+    {
+        if (Application.isPlaying)
+        {
+            var selected = Selection.activeGameObject;
+            var tree = selected.GetComponent<Tree>();
+            if (tree != null)
+            {
+                var nodeSize = 200f;
+                var treePos = new Vector2(Screen.width / 2, 100);
+                DrawNode(tree.Root, treePos, nodeSize);
+            }
+        }
+        
+    }
+
+    public static void DrawNodeButton(string name)
+    {
+        if (GUILayout.Button(name,GUILayout.Width(200), GUILayout.Height(80)))
+        {
+            Debug.Log("Button clicked!");
+        }
+    }
+
+}
+public static class TypeExtensions
+{
+    public static IEnumerable<Type> GetSubclasses(this Type parentType)
+    {
+        var assembly = parentType.Assembly;
+        return assembly.GetTypes().Where(t => t.IsSubclassOf(parentType));
     }
 }
 

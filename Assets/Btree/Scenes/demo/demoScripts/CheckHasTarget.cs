@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Node = BTree.Node;
 
-[CreateAssetMenu(fileName = "CheckHasTarget",menuName = "BehaviorTree/CheckHasTarget")]
+
 public class CheckHasTarget : Node
 {
     private Player _player;

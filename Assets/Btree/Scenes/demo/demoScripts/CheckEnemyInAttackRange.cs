@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CheckEnemyInAttackRange",menuName = "BehaviorTree/CheckEnemyInAttackRange")]
 public class CheckEnemyInAttackRange : Node
 {
     private Player _player;

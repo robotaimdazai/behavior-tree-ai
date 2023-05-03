@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CheckHasDestination",menuName = "BehaviorTree/CheckHasDestination")]
+
 public class CheckHasDestination : Node
 {
     private Player _player;

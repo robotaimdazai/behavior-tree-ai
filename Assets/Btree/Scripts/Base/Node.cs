@@ -25,6 +25,7 @@ namespace BTree
         public List<Node> Children { get => _children; }
         public bool HasChildren { get => _children.Count > 0; }
         public virtual NodeState Tick() => NodeState.FAILURE;
+        public virtual string Symbol => "N";
 
         public Node()
         {

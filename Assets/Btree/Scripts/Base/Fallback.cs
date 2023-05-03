@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace BTree
 {
-    [CreateAssetMenu(fileName = "Fallback",menuName = "BehaviorTree/Fallback")]
     public class Fallback : Node
     {
         public Fallback() : base() { }

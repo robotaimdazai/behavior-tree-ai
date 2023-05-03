@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace BTree
 {
-    [CreateAssetMenu(fileName = "Wait",menuName = "BehaviorTree/Wait")]
     public class Wait : Node
     {
         private float _delay;

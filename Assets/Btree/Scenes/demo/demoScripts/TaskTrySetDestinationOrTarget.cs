@@ -4,7 +4,7 @@ using BTree;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(fileName = "TaskTrySetDestinationOrTarget",menuName = "BehaviorTree/TaskTrySetDestinationOrTarget")]
+
 public class TaskTrySetDestinationOrTarget : Node
 {
     private Player _player;

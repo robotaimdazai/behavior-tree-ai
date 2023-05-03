@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TaskMove",menuName = "BehaviorTree/TaskMove")]
 public class TaskMove : Node
 {
     private Player _player;
