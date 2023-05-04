@@ -34,19 +34,19 @@ namespace BTree
         }
         public Node(List<Node> children) : this()
         {
-            SetChildren(children);
+            AddNodes(children);
         }
-        public void SetChildren(List<Node> children)
+        public void AddNodes(List<Node> children)
         {
             foreach (Node c in children)
-                Attach(c);
+                Add(c);
         }
-        public void Attach(Node child)
+        public void Add(Node child)
         {
             _children.Add(child);
             child._parent = this;
         }
-        public void Detach(Node child)
+        public void Remove(Node child)
         {
             _children.Remove(child);
             child._parent = null;
