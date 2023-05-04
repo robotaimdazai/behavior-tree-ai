@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BTree;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TaskAttack",menuName = "BehaviorTree/TaskAttack")]
 public class TaskAttack : Node
 {
     Player _player;

@@ -7,7 +7,6 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 using Node = BTree.Node;
-using Tree = BTree.Tree;
 
 public class ZoomableEditorWindow : EditorWindow
 {

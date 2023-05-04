@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using BTree;
 using TMPro;
 using UnityEngine;
-using Tree = BTree.Tree;
 
-public class PlayerBTree : Tree
+public class PlayerBTree : BehaviorTree
 {
     private Player _player;
     

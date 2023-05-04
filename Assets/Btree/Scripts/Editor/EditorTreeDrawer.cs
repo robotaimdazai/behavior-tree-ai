@@ -6,7 +6,6 @@ using BTree;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Tree = BTree.Tree;
 
 
 public class EditorTreeDrawer
@@ -65,7 +64,7 @@ public class EditorTreeDrawer
             var selected = Selection.activeGameObject;
             if (selected == null)
                 return;
-            var tree = selected.GetComponent<Tree>();
+            var tree = selected.GetComponent<BehaviorTree>();
             if (tree != null)
             {
                 var nodeSize = 200f;

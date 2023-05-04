@@ -4,7 +4,6 @@ using BTree;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TaskFollow",menuName = "BehaviorTree/TaskFollow")]
 public class TaskFollow : Node
 {
     private Player _player;

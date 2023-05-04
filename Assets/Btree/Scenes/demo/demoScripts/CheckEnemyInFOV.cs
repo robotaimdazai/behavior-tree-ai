@@ -6,7 +6,6 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Node = BTree.Node;
 
-[CreateAssetMenu(fileName = "CheckEnemyInFOV",menuName = "BehaviorTree/CheckEnemyInFOV")]
 public class CheckEnemyInFOV : Node
 {
     private Player _player;
