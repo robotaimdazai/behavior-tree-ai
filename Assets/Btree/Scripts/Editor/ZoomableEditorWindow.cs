@@ -27,7 +27,6 @@ public class ZoomableEditorWindow : EditorWindow
     
     private void OnEnable()
     {
-        _zoomLevel = _max;
         _gridTexture = new Texture2D(1920, 1080, TextureFormat.RGBA32, false);
         _sidePanelTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
         _sidePanelTexture.SetPixel(0, 0, new Color(0, 0, 0, 0.6f));
@@ -67,15 +66,16 @@ public class ZoomableEditorWindow : EditorWindow
         }
         _gridRect = new Rect(0, 0f, Screen.width, Screen.height);
         Vector2 scrollPosition = EditorGUILayout.BeginScrollView(Vector2.zero);
-        //GUIUtility.ScaleAroundPivot(new Vector2(_zoomLevel, _zoomLevel), scrollPosition);
+        GUIUtility.ScaleAroundPivot(new Vector2(_zoomLevel, _zoomLevel), scrollPosition);
         GUI.DrawTexture(_gridRect, _gridTexture, ScaleMode.StretchToFill, true);
         EditorTreeDrawer.DrawTree();
         EditorGUILayout.EndScrollView();
         
+        //discontinued 
+        /*
         _sidePanelRect = new Rect(new Vector2(10f,10f), new Vector2(220f,Screen.height));
         GUI.Box(_sidePanelRect,"");
         GUILayout.BeginArea(_sidePanelRect);
-        
         GUILayout.BeginScrollView(_sideScroll, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
         var allNodeTypes = typeof(Node).GetSubclasses();
         foreach (var type in allNodeTypes)
@@ -85,6 +85,7 @@ public class ZoomableEditorWindow : EditorWindow
         }
         GUILayout.EndScrollView();
         GUILayout.EndArea();
+        */
         Repaint();
     }
 }

@@ -63,6 +63,8 @@ public class EditorTreeDrawer
         if (Application.isPlaying)
         {
             var selected = Selection.activeGameObject;
+            if (selected == null)
+                return;
             var tree = selected.GetComponent<Tree>();
             if (tree != null)
             {
