@@ -17,7 +17,7 @@ public class PlayerBTree : BehaviorTree
         _player = GetComponent<Player>();
     }
     
-    protected override Node Setup()
+    protected override Node Build()
     {
         Node root = new Fallback(new List<Node>()
         {

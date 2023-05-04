@@ -5,13 +5,13 @@ namespace BTree
     public abstract class BehaviorTree : MonoBehaviour
     {
         private Node _root = null;
-        protected abstract Node Setup();
+        protected abstract Node Build();
         
         public Node Root => _root;
         
         protected void Start()
         {
-            _root = Setup();
+            _root = Build();
         }
 
         private void Update()

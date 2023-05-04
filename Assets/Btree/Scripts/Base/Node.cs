@@ -12,7 +12,7 @@ namespace BTree
     }
     
     [System.Serializable]
-    public class Node : ScriptableObject
+    public class Node
     {
         private Node _parent;
         private Dictionary<string, object> _data = new();
