@@ -40,13 +40,12 @@ public class MyAIBehaviorTree : BehaviorTree
 // override Build function to setup root
     public override void Build()
     {
-       SelectorNode root = new Selector();
-       SequenceNode sequence = new Sequence();
+       Fallback root = new Fallback();
+       Sequence sequence = new Sequence();
        sequence.AddChild(new MoveToNode());
        sequence.AddChild(new ShootNode());
        root.AddChild(sequence);
        root.AddChild(new PatrolNode());
-       SetRootNode(root);
      }
     
   }
