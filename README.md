@@ -50,7 +50,7 @@ public class MyAIBehaviorTree : BehaviorTree
     
   }
 </pre>
-<p>In this example, the behavior tree has a <code>SelectorNode</code> as its root node, which has two child nodes: a <code>SequenceNode</code> and a <code>PatrolNode</code>. The <code>SequenceNode</code> has two child nodes: a <code>MoveToNode</code> and a <code>ShootNode</code>.</p>
+<p>In this example, the behavior tree has a <code>Fallback</code> as its root node, which has two child nodes: a <code>Sequence</code> and a <code>PatrolNode</code>. The <code>Sequence</code> has two child nodes: a <code>MoveToNode</code> and a <code>ShootNode</code>.</p>
 <p>Once you have defined your AI's behavior tree, you can use the visual debugger to debug the execution of the tree. To do this, select your AI game object in the Unity editor and open the Behavior Tree Debugger window(Windows/BehaviorTree). You can then step through the execution of the behavior tree and view the state of each node.</p>
 </section>
 </body>
